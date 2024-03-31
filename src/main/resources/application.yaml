@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: projeto-vendedor
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    initialization-mode: never
+  jpa:
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+    show-sql: true
+    defer-datasource-initialization: false
+
+  cloud:
+    aws:
+      endpoint: http://localhost:4566
+      credentials:
+        access-key: teste
+        secret-key: teste
+      region:
+        static: us-east-1
+      sqs:
+        queues:
+          payment-total: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/queuePaymentTotal
+          payment-surplus: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/queuePaymentSurplus
+          payment-partial: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/queuePaymentPartial
